@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "commander": "^10.0.1",
+    "uniqid": "^5.4.0"
+  }
+}
