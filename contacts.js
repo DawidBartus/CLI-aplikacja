@@ -97,7 +97,3 @@ module.exports = {
   removeContact,
   addContact,
 };
-
-// removeContact("e6ywwRe4jcqxXfCZOj_1e");
-// getContactById("vza2RIzNGIwutCVCs4mCL");
-// addContact("dawid", "daw@daw.pl", "572");

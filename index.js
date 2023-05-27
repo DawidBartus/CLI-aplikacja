@@ -1,13 +1,4 @@
 const contactFunction = require("./contacts.js");
-// const { performance } = require("perf_hooks");
-// const start = performance.now();
-
-// contactFunction.listContacts();
-
-// const end = performance.now();
-
-// const duration = end - start;
-// console.log(`Funkcja List wykonała się w ${duration}`);
 
 const { Command } = require("commander");
 const program = new Command();
@@ -22,7 +13,6 @@ program.parse(process.argv);
 
 const argv = program.opts();
 
-// TODO: refaktor
 function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
