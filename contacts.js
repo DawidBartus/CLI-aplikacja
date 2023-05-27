@@ -16,19 +16,16 @@ function listContacts() {
 }
 
 function getContactById(contactId) {
-  fs.readFile(newPath, (err, data) => {
+  fs.readFile(newPath, async (err, data) => {
     if (err) {
       console.error(`Błąd w pliku ${err}`);
       return;
     }
     try {
-      const contacts = JSON.parse(data);
+      const contacts = await JSON.parse(data);
 
-      contacts.map((contact) => {
-        if (contact.id === contactId) {
-          console.log(contact);
-        }
-      });
+      const found = contacts.find((contact) => contact.id === contactId);
+      console.log(found);
     } catch {
       console.error("No contact found");
     }
@@ -46,18 +43,13 @@ function removeContact(contactId) {
       const contacts = JSON.parse(data);
       console.log("Before:");
       console.table(contacts);
-      const delateItem = contacts.findIndex((iteam) => iteam.id === contactId);
 
-      if (delateItem < 0) {
-        console.log("Contact not found");
-        return;
-      }
-
-      contacts.splice(delateItem, 1);
+      const newContact = contacts.filter((contact) => contact.id !== contactId);
 
       console.log("After:");
-      console.table(contacts);
-      fs.writeFile(newPath, JSON.stringify(contacts), (err) => {
+      console.table(newContact);
+
+      fs.writeFile(newPath, JSON.stringify(newContact), (err) => {
         if (err) {
           console.error("Wystąpił błąd");
         }
